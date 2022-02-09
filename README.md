@@ -1,2 +1,2 @@
 # Tkinter-TicTacToe
-Python practice with tic-tac-toe using tkinter
+Practicing python by making tic-tac-toe and using tkinter for a GUI
