@@ -17,48 +17,57 @@ class Logic():
     def checkHorizontal(self):
         global board
 
-        for i in range(0, 9, 3):
-            tmp = []
-            for j in range(i, i+3):
-                tmp.append(board[j])
+        rowOne, rowTwo, rowThree = False, False, False
 
-            if (tmp[0] == tmp[1] == tmp[2]):
-                if (tmp[0] != ""):
-                    return True
+        if ('' not in board[:3]):
+            rowOne = board[0] == board[1] == board[2]
+            if (rowOne):
+                return True
+        if ('' not in board[3:6]):
+            rowTwo = board[3] == board[4] == board[5]
+            if (rowTwo):
+                return True
+        if ('' not in board[6:8]):
+            rowThree = board[6] == board[7] == board[8]
+            if (rowThree):
+                return True
 
         return False
 
     def checkVertical(self):
         global board
 
-        for i in range(0, 3):
-            tmp = []
-            for j in range(i, 9, 3):
-                tmp.append(board[j])
-        
+        tmp = [board[0], board[3], board[6]]
+
+        if ('' not in tmp):
             if (tmp[0] == tmp[1] == tmp[2]):
-                if (tmp[0] != ""):
-                    return True
+                return True
+
+        tmp = [board[1], board[4], board[7]]
+
+        if ('' not in tmp):
+            if (tmp[0] == tmp[1] == tmp[2]):
+                return True
+                
+        tmp = [board[2], board[5], board[8]]
+
+        if ('' not in tmp):
+            if (tmp[0] == tmp[1] == tmp[2]):
+                return True
 
         return False
 
     def checkDiagonal(self):
         global board
 
-        tmp = []
-        tmp.append(board[0])
-        tmp.append(board[4])
-        tmp.append(board[8])
-        if (tmp[0] == tmp[1] == tmp[2]):
-                if (tmp[0] != ""):
+        tmp = [board[0], board[4], board[8]]
+        if ('' not in tmp):
+                if (tmp[0] == tmp[1] == tmp[2]):
                     return True
 
-        tmp = []
-        tmp.append(board[2])
-        tmp.append(board[4])
-        tmp.append(board[6])
-        if (tmp[0] == tmp[1] == tmp[2]):
-                if (tmp[0] != ""):
+        tmp = [board[2], board[4], board[6]]
+        if ('' not in tmp):
+                if (tmp[0] == tmp[1] == tmp[2]):
                     return True
 
         return False
